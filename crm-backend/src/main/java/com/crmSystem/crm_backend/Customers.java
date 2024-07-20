@@ -22,6 +22,6 @@ public class Customers {
     private String lastName;
     private String phoneNumber;
     private String email;
-    private Date brithDay;
+    private Date birthDay;
     private List<Services> pastServices;
 }
