@@ -1,5 +1,6 @@
-package com.crmSystem.crm_backend;
+package com.crmSystem.crm_backend.Repository;
 
+import com.crmSystem.crm_backend.DataCollection.Customers;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

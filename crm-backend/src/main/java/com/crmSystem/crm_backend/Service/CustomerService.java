@@ -1,6 +1,8 @@
-package com.crmSystem.crm_backend;
+package com.crmSystem.crm_backend.Service;
 
 
+import com.crmSystem.crm_backend.Repository.CustomerRepository;
+import com.crmSystem.crm_backend.DataCollection.Customers;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

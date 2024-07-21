@@ -1,4 +1,4 @@
-package com.crmSystem.crm_backend;
+package com.crmSystem.crm_backend.DataCollection;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Services {
-    @Id
+
     private ObjectId id;
     private float TotalPaid;
     private Date serviceDate;
@@ -25,4 +25,15 @@ public class Services {
     private List<ServiceInfo> services;
     //need to store images here
 
+
+
+    public Services(float TotalPaid, Date serviceDate) {
+        this.TotalPaid = TotalPaid;
+        this.serviceDate = serviceDate;
+    }
+//    public Services(float TotalPaid, Date serviceDate, List<ServiceInfo> services) {
+//        this.TotalPaid = TotalPaid;
+//        this.serviceDate = serviceDate;
+//        this.services = services;
+//    }
 }
