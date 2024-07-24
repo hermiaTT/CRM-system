@@ -1,7 +1,7 @@
 package com.crmSystem.crm_backend.Service;
 
 import com.crmSystem.crm_backend.DTO.ServicesDto;
-import com.crmSystem.crm_backend.Collections.Customers;
+import com.crmSystem.crm_backend.Collections.Customer;
 import com.crmSystem.crm_backend.Mapper.ServicesMapper;
 import com.crmSystem.crm_backend.Repository.ServiceRepository;
 import com.crmSystem.crm_backend.Collections.Services;
@@ -46,7 +46,7 @@ public class ServiceService {
         Services service = serviceRepository.insert(ServicesMapper.mapToServices(servicesDTO));
 
         //find the customer who I want to insert the service by phone, update the servicesIds in the customer
-        mongoTemplate.update(Customers.class)
+        mongoTemplate.update(Customer.class)
                 .matching(Criteria.where("phoneNumber").is(phoneNumber))
                 .apply(new Update().push("serviceIds").value(service))
                 .first();

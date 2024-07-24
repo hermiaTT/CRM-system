@@ -1,21 +1,22 @@
-package com.crmSystem.crm_backend.Collections;
+package com.crmSystem.crm_backend.DTO;
 
-import lombok.*;
+import com.crmSystem.crm_backend.Collections.Services;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "customers")
-@Data
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Customers {
+@AllArgsConstructor
+public class CustomerDto {
     @Id
     private ObjectId id;
     private String firstName;

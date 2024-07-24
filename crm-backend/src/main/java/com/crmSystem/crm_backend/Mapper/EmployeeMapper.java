@@ -3,6 +3,9 @@ package com.crmSystem.crm_backend.Mapper;
 import com.crmSystem.crm_backend.Collections.Employee;
 import com.crmSystem.crm_backend.DTO.EmployeeDto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class EmployeeMapper {
     public static EmployeeDto mapToEmployeeDto(Employee employee) {
         return new EmployeeDto(
@@ -24,5 +27,10 @@ public class EmployeeMapper {
                 employeeDto.getPayRate(),
                 employeeDto.getSIN()
         );
+    }
+
+    public static List<EmployeeDto> mapToEmployeeDtoList(List<Employee> employees) {
+        return employees.stream().map(EmployeeMapper::mapToEmployeeDto)
+                .collect(Collectors.toList());
     }
 }
