@@ -1,4 +1,4 @@
-package com.crmSystem.crm_backend.DataCollection;
+package com.crmSystem.crm_backend.Collections;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

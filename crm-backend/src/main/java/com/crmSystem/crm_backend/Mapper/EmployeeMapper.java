@@ -1,0 +1,28 @@
+package com.crmSystem.crm_backend.Mapper;
+
+import com.crmSystem.crm_backend.Collections.Employee;
+import com.crmSystem.crm_backend.DTO.EmployeeDto;
+
+public class EmployeeMapper {
+    public static EmployeeDto mapToEmployeeDto(Employee employee) {
+        return new EmployeeDto(
+                employee.getId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getPhoneNumber(),
+                employee.getPayRate(),
+                employee.getSIN()
+        );
+    }
+
+    public static Employee mapToEmployee(EmployeeDto employeeDto) {
+        return new Employee(
+                employeeDto.getId(),
+                employeeDto.getFirstName(),
+                employeeDto.getLastName(),
+                employeeDto.getPhoneNumber(),
+                employeeDto.getPayRate(),
+                employeeDto.getSIN()
+        );
+    }
+}

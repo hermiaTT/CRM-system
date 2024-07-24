@@ -1,7 +1,7 @@
 package com.crmSystem.crm_backend.Controller;
 
 import com.crmSystem.crm_backend.Service.CustomerService;
-import com.crmSystem.crm_backend.DataCollection.Customers;
+import com.crmSystem.crm_backend.Collections.Customers;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

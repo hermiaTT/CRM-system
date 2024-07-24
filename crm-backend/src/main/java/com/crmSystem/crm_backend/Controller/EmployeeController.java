@@ -1,9 +1,8 @@
 package com.crmSystem.crm_backend.Controller;
 
 
-import com.crmSystem.crm_backend.DTO.ServicesDto;
-import com.crmSystem.crm_backend.Service.ServiceService;
-import com.crmSystem.crm_backend.Collections.Services;
+import com.crmSystem.crm_backend.DTO.EmployeeDto;
+import com.crmSystem.crm_backend.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/api/v1/services")
-public class ServiceController {
+@RequestMapping("/api/v1/employee")
+public class EmployeeController {
     @Autowired
-    private ServiceService serviceService;
+    private EmployeeService employeeService;
 
+    //add employee REST API
     @PostMapping
-    public ResponseEntity<ServicesDto> createService(@RequestBody Map<String, Object> payload) {
-        return new ResponseEntity<ServicesDto>(serviceService.createService(payload), HttpStatus.CREATED);
+    public ResponseEntity<EmployeeDto> addEmployee(@RequestBody EmployeeDto employeeDto) {
+        return new ResponseEntity<EmployeeDto>(employeeService.createEmployee(employeeDto), HttpStatus.CREATED);
     }
 }
