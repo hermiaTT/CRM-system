@@ -19,6 +19,6 @@ public class Employee {
     private String lastName;
     private String phoneNumber;
     private String payRate;
-    private String SIN;
+    private String sin;
 
 }

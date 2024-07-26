@@ -30,10 +30,18 @@ public class CustomerService {
                 .orElseThrow(() -> new ResourcerNotFoundException(id.toString()));
         return CustomersMapper.mapToCustomersDto(customer);
     }
+
     public CustomerDto findCustomerByPhoneNumber(String phoneNumber){
         Customer customer = customerRepository.findByPhoneNumber(phoneNumber)
                 .orElseThrow(() -> new ResourcerNotFoundException("no customer under this phone"+ phoneNumber));
 
         return CustomersMapper.mapToCustomersDto(customer) ;
+    }
+
+    //delete customer
+    public void deleteCustomerById(ObjectId id){
+        Customer customerToDelete = customerRepository.findById(id)
+                .orElseThrow(() -> new ResourcerNotFoundException(id.toString()));
+        customerRepository.delete(customerToDelete);
     }
 }

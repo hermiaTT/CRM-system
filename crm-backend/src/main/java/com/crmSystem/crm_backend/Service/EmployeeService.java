@@ -36,4 +36,25 @@ public class EmployeeService {
                 .orElseThrow(() -> new ResourcerNotFoundException("Employee not found"));
         return EmployeeMapper.mapToEmployeeDto(employee);
     }
+
+    //update employee
+    public EmployeeDto updateEmployee(ObjectId id, EmployeeDto newEmployeeDto) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourcerNotFoundException("Employee not found with the given id"));
+        employee.setLastName(newEmployeeDto.getLastName());
+        employee.setPhoneNumber(newEmployeeDto.getPhoneNumber());
+        employee.setPayRate(newEmployeeDto.getPayRate());
+        employee.setSin(newEmployeeDto.getSin());
+        //update method
+        Employee updatedEmployee = employeeRepository.save(employee);
+        return EmployeeMapper.mapToEmployeeDto(updatedEmployee);
+    }
+
+    //delete employee
+    public void deleteEmployeeById(ObjectId id) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourcerNotFoundException("Employee not found with the given id"));
+
+        employeeRepository.deleteById(id);
+    }
 }
