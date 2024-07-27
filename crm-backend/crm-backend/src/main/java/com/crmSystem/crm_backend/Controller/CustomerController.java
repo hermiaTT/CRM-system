@@ -25,19 +25,19 @@ public class CustomerController {
 
     //get single movie
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable ObjectId id) {
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable("id") ObjectId id) {
         return new ResponseEntity<CustomerDto>(customerService.findCustomerById(id),HttpStatus.OK) ;
     }
 
     //form a dynamic querying by key other than object id
     @GetMapping("/customer/{phoneNumber}")
-    public ResponseEntity<CustomerDto> getCustomerByPhoneNumber(@PathVariable String phoneNumber) {
+    public ResponseEntity<CustomerDto> getCustomerByPhoneNumber(@PathVariable("phoneNumber") String phoneNumber) {
         return  new ResponseEntity<CustomerDto>(customerService.findCustomerByPhoneNumber(phoneNumber),HttpStatus.OK) ;
     }
 
     //delete customer
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable ObjectId id) {
+    public ResponseEntity<String> deleteCustomer(@PathVariable("id") ObjectId id) {
         customerService.deleteCustomerById(id);
         return new ResponseEntity<String>("customer deleted",HttpStatus.OK) ;
     }

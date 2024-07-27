@@ -30,18 +30,18 @@ public class EmployeeController {
 
     //get employee by id REST API
     @GetMapping("{id}")
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable ObjectId id) {
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") ObjectId id) {
         return new ResponseEntity<EmployeeDto>(employeeService.getEmployeeDtoById(id), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployeeById(@PathVariable ObjectId id, @RequestBody EmployeeDto newemployeeDto) {
+    public ResponseEntity<EmployeeDto> updateEmployeeById(@PathVariable("id") ObjectId id, @RequestBody EmployeeDto newemployeeDto) {
         return new ResponseEntity<EmployeeDto>(employeeService.updateEmployee(id, newemployeeDto), HttpStatus.OK);
     }
 
     //delete employee
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteEmployeeById(@PathVariable ObjectId id) {
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") ObjectId id) {
         employeeService.deleteEmployeeById(id);
         return new ResponseEntity<String>("Employee deleted successfully", HttpStatus.OK);
     }
