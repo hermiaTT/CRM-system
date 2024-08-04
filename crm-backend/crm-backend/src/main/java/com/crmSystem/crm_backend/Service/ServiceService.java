@@ -1,57 +1,43 @@
 package com.crmSystem.crm_backend.Service;
 
-import com.crmSystem.crm_backend.DTO.ServicesDto;
-import com.crmSystem.crm_backend.Collections.Customer;
+import com.crmSystem.crm_backend.DTO.ServiceDto;
 import com.crmSystem.crm_backend.Mapper.ServicesMapper;
 import com.crmSystem.crm_backend.Repository.ServiceRepository;
-import com.crmSystem.crm_backend.Collections.Services;
+import com.crmSystem.crm_backend.Collections.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Service
+@org.springframework.stereotype.Service
 public class ServiceService {
     @Autowired
     private ServiceRepository serviceRepository;
 
     //create a template to store those services with a customer
-    @Autowired
-    private MongoTemplate mongoTemplate;
-    DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    @Transactional
+    public ServiceDto createService(ServiceDto serviceDto) {
+        Service service = ServicesMapper.mapToService(serviceDto);
+       //does not need try catch, because we can add services as many as we want for the same customer and employee
+        return ServicesMapper.mapToServiceDto(serviceRepository.save(service));
+    }
 
-    //create service from one client and add the service to the current client data
-    public ServicesDto createService(Map<String, Object> request) {
+    @Transactional
+    public List<ServiceDto> findAllServices() {
+        List<Service> services = serviceRepository.findAll();
+        return ServicesMapper.mapToServicesDtoList(services);
+    }
 
-        String phoneNumber = request.get("phoneNumber").toString();
-
-        Map<String,Object> requestBody = (Map<String, Object>) request.get("requestBody");
-
-        ServicesDto servicesDTO = new ServicesDto();
-
-        servicesDTO.setTotalPaid(Float.parseFloat(requestBody.get("totalPaid").toString()));
-       //convert serviceDate to Date
-        try{
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            servicesDTO.setServiceDate(simpleDateFormat.parse(requestBody.get("serviceDate").toString()));
-        }catch(Exception e){
-            throw new RuntimeException("Failed to parse date");
-        }
-//        List<ServiceInfo> services = ( List<ServiceInfo>)request.get("services");
-        Services service = serviceRepository.insert(ServicesMapper.mapToServices(servicesDTO));
-
-        //find the customer who I want to insert the service by phone, update the servicesIds in the customer
-        mongoTemplate.update(Customer.class)
-                .matching(Criteria.where("phoneNumber").is(phoneNumber))
-                .apply(new Update().push("serviceIds").value(service))
-                .first();
-
-    return ServicesMapper.mapToServicesDto(service);
-
+    //find all services by customer id
+    @Transactional(readOnly = true)
+    public List<ServiceDto> findServicesByCustomerId(Long customerId) {
+        List<Service> serviceList = serviceRepository.findByCustomerId(customerId);
+        return ServicesMapper.mapToServicesDtoList(serviceList);
+    }
+    //find all services by employee id
+    @Transactional(readOnly = true)
+    public List<ServiceDto> findServicesByEmployeeId(Long employeeId) {
+        List<Service> serviceList = serviceRepository.findByEmployeeId(employeeId);
+        return ServicesMapper.mapToServicesDtoList(serviceList);
     }
 }

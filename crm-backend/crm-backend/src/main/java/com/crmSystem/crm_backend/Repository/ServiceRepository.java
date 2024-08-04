@@ -1,10 +1,13 @@
 package com.crmSystem.crm_backend.Repository;
 
-import com.crmSystem.crm_backend.Collections.Services;
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.crmSystem.crm_backend.Collections.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface ServiceRepository extends MongoRepository<Services, ObjectId> {
+public interface ServiceRepository extends JpaRepository<Service, Long> {
+    List<Service> findByCustomerId(Long customerId);
+    List<Service> findByEmployeeId(Long employeeId);
 }

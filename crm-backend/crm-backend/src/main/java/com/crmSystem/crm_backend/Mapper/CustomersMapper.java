@@ -13,9 +13,13 @@ public class CustomersMapper {
                 customer.getFirstName(),
                 customer.getLastName(),
                 customer.getPhoneNumber(),
-                customer.getEmail(),
-                customer.getBirthDay(),
-                customer.getPastServices()
+                customer.getBirthday(),
+                customer.getVipType(),
+                customer.getBalance(),
+                customer.getComingResource(),
+                customer.getFirstLanguage(),
+                customer.getNote(),
+                customer.getIsVip()
         );
     }
 
@@ -25,9 +29,13 @@ public class CustomersMapper {
                 customerDto.getFirstName(),
                 customerDto.getLastName(),
                 customerDto.getPhoneNumber(),
-                customerDto.getEmail(),
-                customerDto.getBirthDay(),
-                customerDto.getPastServices()
+                customerDto.getBirthday(),
+                customerDto.getVipType(),
+                customerDto.getBalance(),
+                customerDto.getComingResource(),
+                customerDto.getFirstLanguage(),
+                customerDto.getNote(),
+                customerDto.getIsVip()
         );
     }
 

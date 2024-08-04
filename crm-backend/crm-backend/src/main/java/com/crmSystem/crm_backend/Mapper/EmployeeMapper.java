@@ -13,8 +13,8 @@ public class EmployeeMapper {
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getPhoneNumber(),
-                employee.getPayRate(),
-                employee.getSin()
+                employee.getSin(),
+                employee.getPayRate()
         );
     }
 
@@ -24,8 +24,8 @@ public class EmployeeMapper {
                 employeeDto.getFirstName(),
                 employeeDto.getLastName(),
                 employeeDto.getPhoneNumber(),
-                employeeDto.getPayRate(),
-                employeeDto.getSin()
+                employeeDto.getSin(),
+                employeeDto.getPayRate()
         );
     }
 
