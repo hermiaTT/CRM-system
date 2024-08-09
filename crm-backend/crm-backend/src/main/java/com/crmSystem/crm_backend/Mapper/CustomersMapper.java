@@ -3,6 +3,7 @@ package com.crmSystem.crm_backend.Mapper;
 import com.crmSystem.crm_backend.Collections.Customer;
 import com.crmSystem.crm_backend.DTO.CustomerDto;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,7 @@ public class CustomersMapper {
                 customer.getFirstName(),
                 customer.getLastName(),
                 customer.getPhoneNumber(),
-                customer.getBirthday(),
+                customer.getBirthday().getTime(),
                 customer.getVipType(),
                 customer.getBalance(),
                 customer.getComingResource(),
@@ -29,7 +30,7 @@ public class CustomersMapper {
                 customerDto.getFirstName(),
                 customerDto.getLastName(),
                 customerDto.getPhoneNumber(),
-                customerDto.getBirthday(),
+                new Timestamp(customerDto.getBirthday()),
                 customerDto.getVipType(),
                 customerDto.getBalance(),
                 customerDto.getComingResource(),

@@ -16,7 +16,7 @@ public class CustomerDto {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Date birthday;
+    private long birthday;
     private String vipType;
     private float balance;
     private String comingResource;

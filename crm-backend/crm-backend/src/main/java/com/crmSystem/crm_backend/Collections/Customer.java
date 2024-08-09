@@ -3,6 +3,7 @@ package com.crmSystem.crm_backend.Collections;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -28,7 +29,7 @@ public class Customer {
     private String phoneNumber;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private Timestamp birthday;
 
     @Column(name = "vip_type")
     private String vipType;

@@ -18,23 +18,23 @@ public class ServiceController {
 
     @PostMapping
     public ResponseEntity<ServiceDto> addNewService(@RequestBody ServiceDto serviceDto) {
-        return new ResponseEntity<ServiceDto>(serviceService.createService(serviceDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(serviceService.createService(serviceDto), HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<ServiceDto>> getAllServices() {
-     return new ResponseEntity<List<ServiceDto>>(serviceService.findAllServices(), HttpStatus.OK);
+     return new ResponseEntity<>(serviceService.findAllServices(), HttpStatus.OK);
     }
 
     //find by customer id
     @GetMapping("/customer/{id}")
     public ResponseEntity<List<ServiceDto>> getServiceByCustomerId(@PathVariable Long id) {
-        return new ResponseEntity<List<ServiceDto>>(serviceService.findServicesByCustomerId(id), HttpStatus.OK);
+        return new ResponseEntity<>(serviceService.findServicesByCustomerId(id), HttpStatus.OK);
     }
 
     //find by employee id
     @GetMapping("/employee/{id}")
     public ResponseEntity<List<ServiceDto>> getServiceByEmployeeId(@PathVariable Long id) {
-        return new ResponseEntity<List<ServiceDto>>(serviceService.findServicesByEmployeeId(id), HttpStatus.OK);
+        return new ResponseEntity<>(serviceService.findServicesByEmployeeId(id), HttpStatus.OK);
     }
 }

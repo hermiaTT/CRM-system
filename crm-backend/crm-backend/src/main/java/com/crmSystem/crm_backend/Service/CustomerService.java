@@ -13,6 +13,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -68,7 +69,7 @@ public class CustomerService {
         customer.setFirstName(customerDto.getFirstName());
         customer.setLastName(customerDto.getLastName());
         customer.setPhoneNumber(customerDto.getPhoneNumber());
-        customer.setBirthday(customerDto.getBirthday());
+        customer.setBirthday(new Timestamp(customerDto.getBirthday()) );
         customer.setVipType(customerDto.getVipType());
         customer.setBalance(customerDto.getBalance());
         customer.setComingResource(customerDto.getComingResource());

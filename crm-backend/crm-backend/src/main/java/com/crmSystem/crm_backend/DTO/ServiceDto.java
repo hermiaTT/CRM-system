@@ -3,6 +3,7 @@ package com.crmSystem.crm_backend.DTO;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,8 +17,10 @@ public class ServiceDto {
     private boolean isTaxed;
     private float tips;
     private float totalPaid;
-    private Date serviceDate;
-    private byte[] serviceImg;
+    private long serviceDate;
+    private List<byte[]> serviceImg;
+    private String customerName;
+    private String employeeName;
     private Long customerId; // Use IDs for customer
     private Long employeeId; // Use IDs for employee
 
